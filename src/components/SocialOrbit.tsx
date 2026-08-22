@@ -1,103 +1,38 @@
 import type { CSSProperties, ReactNode } from 'react';
 import './SocialOrbit.css';
 
-type Social = {
+type Item = {
   name: string;
   href: string;
-  color: string;
-  icon: ReactNode;
+  logo: ReactNode;
   ring: 'inner' | 'mid' | 'outer';
   angle: number;
 };
 
-const socials: Social[] = [
-  {
-    name: 'X',
-    href: '#',
-    color: '#1d9bf0',
-    ring: 'inner',
-    angle: 0,
-    icon: (
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-        <path d="M18.244 2.25h3.308l-7.227 8.26 7.227 8.26h-3.308l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.68 2.25H4.99l5.013 6.231 5.241-6.231z" />
-      </svg>
-    ),
-  },
-  {
-    name: 'Instagram',
-    href: '#',
-    color: '#E1306C',
-    ring: 'inner',
-    angle: 180,
-    icon: (
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-        <path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0689 4.947 0 3.2586.0125 3.6693.0689 4.9469.0563 1.277.2566 2.1498.552 2.9134.3073.7905.7169 1.4593 1.3817 2.1265.6654.6671 1.3342 1.0794 2.1229 1.3869.7623.2987 1.6342.4993 2.9111.5556 1.2777.0563 1.6873.0687 4.9461.0687 3.2588 0 3.6683-.0124 4.9459-.0687 1.2768-.0563 2.1487-.2603 2.9111-.5556.7889-.3075 1.4576-.7198 2.1229-1.3869.6654-.6672 1.075-1.336 1.3822-2.1265.2954-.7636.4956-1.6364.552-2.9134.0563-1.2776.0688-1.6883.0688-4.9469 0-3.2587-.0125-3.6694-.0688-4.947-.0564-1.2775-.2566-2.1502-.552-2.9134-.3073-.7906-.7169-1.4593-1.3801-2.1265-.6652-.6677-1.334-1.0799-2.1228-1.3877-.7623-.2993-1.6342-.503-2.911-.5634-.0564-.0129-1.6898-.0167-4.9465-.0167-3.2567 0-3.669.0038-4.9455.0167zm.906 8.1227c0-2.5565 2.0722-4.6287 4.6287-4.6287s4.6287 2.0722 4.6287 4.6287c0 2.5564-2.0722 4.6287-4.6287 4.6287s-4.6287-2.0723-4.6287-4.6287zm5.8849 0c0 1.5334-1.243 2.7764-2.7764 2.7764-1.5335 0-2.7764-1.243-2.7764-2.7764 0-1.5334 1.2429-2.7764 2.7764-2.7764 1.5334 0 2.7764 1.243 2.7764 2.7764zm-9.4274 4.7758c.6048-.6048 1.3486-.8629 2.1408-.8629 1.6382 0 2.9604 1.3222 2.9604 2.9604 0 .7922-.2581 1.536-.8629 2.1408-.6048.6049-1.3486.8629-2.1408.8629-1.6382 0-2.9604-1.3222-2.9604-2.9604 0-.7922.2581-1.536.8629-2.1408z" />
-      </svg>
-    ),
-  },
-  {
-    name: 'YouTube',
-    href: '#',
-    color: '#FF0000',
-    ring: 'mid',
-    angle: 90,
-    icon: (
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-      </svg>
-    ),
-  },
-  {
-    name: 'LinkedIn',
-    href: '#',
-    color: '#0A66C2',
-    ring: 'mid',
-    angle: 210,
-    icon: (
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-      </svg>
-    ),
-  },
-  {
-    name: 'Reddit',
-    href: '#',
-    color: '#FF4500',
-    ring: 'mid',
-    angle: 330,
-    icon: (
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-        <path d="M24 11.779c0-1.459-1.192-2.645-2.657-2.645-.715 0-1.363.286-1.84.747-1.81-1.191-4.259-1.949-6.971-2.046l1.483-4.669 4.016.941-.006.058c0 1.193.97 2.163 2.163 2.163 1.193 0 2.164-.97 2.164-2.163s-.97-2.164-2.164-2.164c-.91 0-1.688.547-2.028 1.329l-4.547-1.065c-.22-.051-.44.104-.493.327l-1.575 4.957c-2.742.094-5.229.852-7.055 2.08-.477-.439-1.103-.715-1.79-.715-1.465 0-2.657 1.184-2.657 2.645 0 .208.018.411.052.611-.356.303-.598.719-.598 1.195 0 .957.778 1.735 1.735 1.735.415 0 .796-.148 1.094-.393a8.4 8.4 0 0 0 6.996 3.653c2.645 0 4.992-1.217 6.554-3.119.302.245.683.393 1.098.393 1.236 0 2.243-.965 2.243-2.154 0-.481-.199-.904-.52-1.211.035-.2.052-.404.052-.613zm-9.433 4.625c-.971 0-1.758-.787-1.758-1.758s.787-1.758 1.758-1.758 1.758.787 1.758 1.758-.787 1.758-1.758 1.758zm5.263 0c-.971 0-1.758-.787-1.758-1.758s.787-1.758 1.758-1.758 1.758.787 1.758 1.758-.787 1.758-1.758 1.758zm-5.263-3.259c-.548 0-.993-.445-.993-.993s.445-.993.993-.993.993.445.993.993-.445.993-.993.993zm5.263 0c-.548 0-.993-.445-.993-.993s.445-.993.993-.993.993.445.993.993-.445.993-.993.993z" />
-      </svg>
-    ),
-  },
-  {
-    name: 'Fiverr',
-    href: '#',
-    color: '#1DBF73',
-    ring: 'outer',
-    angle: 30,
-    icon: <span className="mono">Fi</span>,
-  },
-  {
-    name: 'Upwork',
-    href: '#',
-    color: '#14A800',
-    ring: 'outer',
-    angle: 150,
-    icon: <span className="mono">Up</span>,
-  },
-  {
-    name: 'Contra',
-    href: '#',
-    color: '#A068FF',
-    ring: 'outer',
-    angle: 270,
-    icon: <span className="mono">Co</span>,
-  },
+const phoneIcon = (
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className="orbit-phone">
+    <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+  </svg>
+);
+
+const img = (file: string, alt: string) => (
+  <img src={`/socials/${file}`} alt={alt} className="orbit-logo" />
+);
+
+// Order per request: Reddit, X, Instagram, Contra, Upwork, Fiverr, LinkedIn, Gmail, Contact(phone)
+const items: Item[] = [
+  { name: 'Reddit', href: 'https://reddit.com', logo: img('reddit.ico', 'Reddit'), ring: 'inner', angle: 0 },
+  { name: 'X', href: 'https://x.com', logo: img('x.ico', 'X'), ring: 'inner', angle: 120 },
+  { name: 'Instagram', href: 'https://instagram.com', logo: img('instagram.ico', 'Instagram'), ring: 'inner', angle: 240 },
+  { name: 'Contra', href: 'https://contra.com', logo: img('contra.ico', 'Contra'), ring: 'mid', angle: 60 },
+  { name: 'Upwork', href: 'https://upwork.com', logo: img('upwork.ico', 'Upwork'), ring: 'mid', angle: 180 },
+  { name: 'Fiverr', href: 'https://fiverr.com', logo: img('fiverr.ico', 'Fiverr'), ring: 'mid', angle: 300 },
+  { name: 'LinkedIn', href: 'https://linkedin.com', logo: img('linkedin.ico', 'LinkedIn'), ring: 'outer', angle: 30 },
+  { name: 'Gmail', href: 'https://gmail.com', logo: img('gmail.ico', 'Gmail'), ring: 'outer', angle: 150 },
+  { name: 'Contact', href: 'tel:+919138278584', logo: phoneIcon, ring: 'outer', angle: 270 },
 ];
 
-const rings: Social['ring'][] = ['inner', 'mid', 'outer'];
+const rings: Item['ring'][] = ['inner', 'mid', 'outer'];
 
 export default function SocialOrbit() {
   return (
@@ -112,7 +47,7 @@ export default function SocialOrbit() {
 
       {rings.map((ring) => (
         <div key={ring} className={`orbit orbit-${ring}`}>
-          {socials
+          {items
             .filter((s) => s.ring === ring)
             .map((s) => (
               <div
@@ -126,14 +61,8 @@ export default function SocialOrbit() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={s.name}
-                  style={
-                    {
-                      '--brand': s.color,
-                      '--glow': s.color,
-                    } as CSSProperties
-                  }
                 >
-                  {s.icon}
+                  <span className="orbit-logo-wrap">{s.logo}</span>
                 </a>
               </div>
             ))}
