@@ -13,7 +13,7 @@ export default function HeroSection() {
         revealLayerClassName="absolute inset-0 z-20 pointer-events-none hidden lg:block"
       />
 
-      <div className="pointer-events-none hidden lg:block absolute right-[4%] xl:right-[7%] top-1/2 -translate-y-1/2 z-10">
+      <div className="pointer-events-none hidden lg:block absolute right-[2%] xl:right-[4%] top-1/2 -translate-y-1/2 z-30">
         <SocialOrbit />
       </div>
 
