@@ -1,6 +1,7 @@
 import FadeIn from '../components/FadeIn';
 import ContactButton from '../components/ContactButton';
 import ImageRevealBackground from '../components/ImageRevealBackground';
+import SocialOrbit from '../components/SocialOrbit';
 import logoUrl from '../assets/logo.png';
 import { CONTACT_URL } from '../lib/constants';
 
@@ -11,6 +12,10 @@ export default function HeroSection() {
         baseLayerClassName="absolute inset-0 z-0 pointer-events-none"
         revealLayerClassName="absolute inset-0 z-20 pointer-events-none hidden lg:block"
       />
+
+      <div className="pointer-events-none hidden lg:block absolute right-[4%] xl:right-[7%] top-1/2 -translate-y-1/2 z-10">
+        <SocialOrbit />
+      </div>
 
       <div className="relative z-30 px-6 md:px-10 pt-6 md:pt-8">
         <nav className="flex justify-between items-center">
