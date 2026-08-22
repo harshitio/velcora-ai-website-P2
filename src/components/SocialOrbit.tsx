@@ -27,7 +27,8 @@ const items: Item[] = [
   { name: 'Contra', href: 'https://contra.com', logo: img('contra.ico', 'Contra'), ring: 'mid', angle: 60 },
   { name: 'Upwork', href: 'https://upwork.com', logo: img('upwork.ico', 'Upwork'), ring: 'mid', angle: 180 },
   { name: 'Fiverr', href: 'https://fiverr.com', logo: img('fiverr.ico', 'Fiverr'), ring: 'mid', angle: 300 },
-  { name: 'LinkedIn', href: 'https://linkedin.com', logo: img('linkedin.ico', 'LinkedIn'), ring: 'outer', angle: 30 },
+  { name: 'LinkedIn', href: 'https://linkedin.com', logo: img('linkedin.ico', 'LinkedIn'), ring: 'outer', angle: 0 },
+  { name: 'GitHub', href: 'https://github.com', logo: img('github.ico', 'GitHub'), ring: 'outer', angle: 90 },
   {
     name: 'Gmail',
     href: 'mailto:velcora.ai@gmail.com',
@@ -37,7 +38,7 @@ const items: Item[] = [
       </svg>
     ),
     ring: 'outer',
-    angle: 150,
+    angle: 180,
   },
   { name: 'Contact', href: 'tel:+919138278584', logo: phoneIcon, ring: 'outer', angle: 270 },
 ];
