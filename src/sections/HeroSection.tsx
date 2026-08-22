@@ -1,3 +1,4 @@
+import { motion, useScroll, useTransform } from 'framer-motion';
 import FadeIn from '../components/FadeIn';
 import ContactButton from '../components/ContactButton';
 import ImageRevealBackground from '../components/ImageRevealBackground';
@@ -6,6 +7,11 @@ import logoUrl from '../assets/logo.png';
 import { CONTACT_URL } from '../lib/constants';
 
 export default function HeroSection() {
+  const { scrollY } = useScroll();
+  const orbitOpacity = useTransform(scrollY, [0, 450], [1, 0]);
+  const orbitScale = useTransform(scrollY, [0, 450], [1, 0.82]);
+  const orbitY = useTransform(scrollY, [0, 450], [0, -30]);
+
   return (
     <section className="relative flex h-screen flex-col overflow-x-clip bg-white text-black">
       <ImageRevealBackground
@@ -14,7 +20,11 @@ export default function HeroSection() {
       />
 
       <div className="pointer-events-none hidden lg:block absolute right-[2%] xl:right-[4%] top-1/2 -translate-y-1/2 z-30">
-        <SocialOrbit />
+        <motion.div
+          style={{ opacity: orbitOpacity, scale: orbitScale, y: orbitY }}
+        >
+          <SocialOrbit />
+        </motion.div>
       </div>
 
       <div className="relative z-30 px-6 md:px-10 pt-6 md:pt-8">

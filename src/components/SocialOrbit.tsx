@@ -4,6 +4,7 @@ import './SocialOrbit.css';
 type Social = {
   name: string;
   href: string;
+  color: string;
   icon: ReactNode;
   ring: 'inner' | 'mid' | 'outer';
   angle: number;
@@ -13,6 +14,7 @@ const socials: Social[] = [
   {
     name: 'X',
     href: '#',
+    color: '#1d9bf0',
     ring: 'inner',
     angle: 0,
     icon: (
@@ -24,6 +26,7 @@ const socials: Social[] = [
   {
     name: 'Instagram',
     href: '#',
+    color: '#E1306C',
     ring: 'inner',
     angle: 180,
     icon: (
@@ -35,6 +38,7 @@ const socials: Social[] = [
   {
     name: 'YouTube',
     href: '#',
+    color: '#FF0000',
     ring: 'mid',
     angle: 90,
     icon: (
@@ -46,6 +50,7 @@ const socials: Social[] = [
   {
     name: 'LinkedIn',
     href: '#',
+    color: '#0A66C2',
     ring: 'mid',
     angle: 210,
     icon: (
@@ -57,6 +62,7 @@ const socials: Social[] = [
   {
     name: 'Reddit',
     href: '#',
+    color: '#FF4500',
     ring: 'mid',
     angle: 330,
     icon: (
@@ -68,6 +74,7 @@ const socials: Social[] = [
   {
     name: 'Fiverr',
     href: '#',
+    color: '#1DBF73',
     ring: 'outer',
     angle: 30,
     icon: <span className="mono">Fi</span>,
@@ -75,6 +82,7 @@ const socials: Social[] = [
   {
     name: 'Upwork',
     href: '#',
+    color: '#14A800',
     ring: 'outer',
     angle: 150,
     icon: <span className="mono">Up</span>,
@@ -82,6 +90,7 @@ const socials: Social[] = [
   {
     name: 'Contra',
     href: '#',
+    color: '#A068FF',
     ring: 'outer',
     angle: 270,
     icon: <span className="mono">Co</span>,
@@ -117,6 +126,12 @@ export default function SocialOrbit() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={s.name}
+                  style={
+                    {
+                      '--brand': s.color,
+                      '--glow': s.color,
+                    } as CSSProperties
+                  }
                 >
                   {s.icon}
                 </a>
