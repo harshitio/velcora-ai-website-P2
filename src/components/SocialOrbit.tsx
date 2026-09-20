@@ -17,7 +17,7 @@ const items: Item[] = [
   { name: 'X', href: 'https://x.com/Harshit_io', logo: img('x.ico', 'X'), ring: 'inner', angle: 0 },
   { name: 'GitHub', href: 'https://github.com/harshitio', logo: img('github.ico', 'GitHub'), ring: 'inner', angle: 120 },
   { name: 'LinkedIn', href: 'https://linkedin.com/in/harshit', logo: img('linkedin.ico', 'LinkedIn'), ring: 'inner', angle: 240 },
-  { name: 'Instagram', href: 'https://instagram.com/harshit.dev1', logo: img('instagram.ico', 'Instagram'), ring: 'mid', angle: 60 },
+  { name: 'Instagram', href: 'https://instagram.com/harshit.dev1', logo: img('instagram.ico', 'Instagram'), ring: 'mid', angle: 90 },
   {
     name: 'Email',
     href: 'mailto:braincore189@gmail.com',
@@ -27,12 +27,8 @@ const items: Item[] = [
       </svg>
     ),
     ring: 'mid',
-    angle: 180,
+    angle: 270,
   },
-  { name: 'About', href: '#about', logo: img('reddit.ico', 'About'), ring: 'mid', angle: 300 },
-  { name: 'Projects', href: '#projects', logo: img('contra.ico', 'Projects'), ring: 'outer', angle: 0 },
-  { name: 'Contact', href: '#contact', logo: img('upwork.ico', 'Contact'), ring: 'outer', angle: 120 },
-  { name: 'Now', href: '#now', logo: img('fiverr.ico', 'Now'), ring: 'outer', angle: 240 },
 ];
 
 const rings: Item['ring'][] = ['inner', 'mid', 'outer'];
