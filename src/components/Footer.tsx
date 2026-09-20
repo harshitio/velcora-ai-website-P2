@@ -1,4 +1,4 @@
-import { GITHUB_URL, X_URL, LINKEDIN_URL, INSTAGRAM_URL, CONTACT_EMAIL, GMAIL_COMPOSE_URL } from '../lib/constants';
+import { GITHUB_URL, X_URL, LINKEDIN_URL, INSTAGRAM_URL, GMAIL_COMPOSE_URL } from '../lib/constants';
 
 export default function Footer() {
   return (
