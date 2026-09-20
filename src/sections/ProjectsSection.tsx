@@ -377,13 +377,6 @@ function ImageLightbox({
 }
 
 function ProjectCard({ project, index, onOpen }: { project: Project; index: number; onOpen: () => void }) {
-  const statusColors: Record<Project['status'], string> = {
-    live: 'bg-green-500/20 text-green-400 border-green-500/30',
-    prototype: 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30',
-    experimental: 'bg-blue-500/20 text-blue-400 border-blue-500/30',
-    archived: 'bg-gray-500/20 text-gray-400 border-gray-500/30',
-  };
-
   return (
     <motion.button
       type="button"
@@ -411,14 +404,9 @@ function ProjectCard({ project, index, onOpen }: { project: Project; index: numb
         <div className="absolute inset-0 bg-gradient-to-t from-[#0C0C0C] via-transparent to-transparent opacity-80" />
       </div>
       <div className="p-5 sm:p-6">
-        <div className="flex items-center gap-3 mb-2">
-          <p className="uppercase tracking-[0.25em] text-[#D7E2EA]/50 text-[11px]">
-            {project.category}
-          </p>
-          <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full border ${statusColors[project.status]}`}>
-            {project.status}
-          </span>
-        </div>
+        <p className="uppercase tracking-[0.25em] text-[#D7E2EA]/50 text-[11px] mb-2">
+          {project.category}
+        </p>
         <h3 className="hero-heading font-black uppercase leading-none tracking-tight text-[clamp(1.3rem,3vw,1.8rem)] mb-2">
           {project.name}
         </h3>
@@ -450,13 +438,6 @@ function ProjectDetail({ project, index }: { project: Project; index: number }) 
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const flipped = index % 2 === 1;
 
-  const statusColors: Record<Project['status'], string> = {
-    live: 'bg-green-500/20 text-green-400 border-green-500/30',
-    prototype: 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30',
-    experimental: 'bg-blue-500/20 text-blue-400 border-blue-500/30',
-    archived: 'bg-gray-500/20 text-gray-400 border-gray-500/30',
-  };
-
   const Btn =
     'inline-flex items-center gap-2 rounded-full border border-[#D7E2EA]/60 px-6 py-3 text-sm font-medium uppercase tracking-widest text-[#D7E2EA] transition-colors duration-200 hover:bg-[#D7E2EA] hover:text-[#0C0C0C]';
 
@@ -471,14 +452,9 @@ function ProjectDetail({ project, index }: { project: Project; index: number }) 
 
       <div className="max-w-6xl mx-auto relative">
         <div className="mb-10 sm:mb-14">
-          <div className="flex items-center gap-3 mb-3">
-            <p className="uppercase tracking-[0.3em] text-[#D7E2EA]/60 text-xs sm:text-sm">
-              Project {project.number}
-            </p>
-            <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full border ${statusColors[project.status]}`}>
-              {project.status}
-            </span>
-          </div>
+          <p className="uppercase tracking-[0.3em] text-[#D7E2EA]/60 text-xs sm:text-sm mb-3">
+            Project {project.number}
+          </p>
           <h3 className="hero-heading font-black uppercase leading-none tracking-tight text-[clamp(2.2rem,6vw,5rem)] mb-4">
             {project.name}
           </h3>

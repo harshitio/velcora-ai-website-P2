@@ -61,20 +61,11 @@ export default function AboutSection() {
         </FadeIn>
 
         <FadeIn delay={0.1} y={20}>
-          <div className="relative">
-            <img
-              src="/harshit-profile.jpeg"
-              alt="Harshit"
-              className="w-[120px] h-[120px] sm:w-[150px] sm:h-[150px] md:w-[180px] md:h-[180px] rounded-2xl object-cover border-2 border-[#D7E2EA]/20 shadow-xl"
-            />
-            <div className="absolute -top-3 -right-3 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center shadow-lg">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M12 2L2 7l10 5 10-5-10-5z" />
-                <path d="M2 17l10 5 10-5" />
-                <path d="M2 12l10 5 10-5" />
-              </svg>
-            </div>
-          </div>
+          <img
+            src="/harshit-profile.jpeg"
+            alt="Harshit"
+            className="w-[120px] h-[120px] sm:w-[150px] sm:h-[150px] md:w-[180px] md:h-[180px] rounded-2xl object-cover border-2 border-[#D7E2EA]/20"
+          />
         </FadeIn>
 
         <FadeIn delay={0.15} y={30}>
