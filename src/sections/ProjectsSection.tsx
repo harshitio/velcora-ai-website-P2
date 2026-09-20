@@ -128,7 +128,7 @@ const PROJECTS: Project[] = [
       'Overview command center: today\'s chairs, active services, low-stock alerts, daily gross with commission splits.',
       'Appointments workspace with a chair scheduling matrix plus a client booking demo portal.',
       'Color bar: barcode inventory tracking with station-mix simulation and auto-deduct on service completion.',
-      'AI automations — SMS / WhatsApp client retention bot, no-show alerts, and a Velcora AI Copilot layer.',
+      'AI automations — SMS / WhatsApp client retention bot, no-show alerts, and an AI Copilot layer.',
     ],
     stack: ['TypeScript', 'Vite', 'React', 'Tailwind', 'AI Automations'],
     images: [
