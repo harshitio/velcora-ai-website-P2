@@ -1,4 +1,8 @@
 import FadeIn from '../components/FadeIn';
+import moon from '../assets/about/moon.png';
+import p59 from '../assets/about/p59.png';
+import lego from '../assets/about/lego.png';
+import group from '../assets/about/group.png';
 
 const ABOUT_TEXT =
   'I am interested in practical AI: agents that complete useful workflows, automation that removes repetitive work, and products that people can understand and use. Most of my learning happens by building in public — making a version, testing it, finding what breaks, and trying again.';
@@ -12,7 +16,23 @@ const FOCUS_AREAS = [
 
 export default function AboutSection() {
   return (
-    <section id="about" className="relative bg-[#0C0C0C] flex min-h-screen flex-col items-center justify-center px-5 sm:px-8 md:px-10 py-20">
+    <section id="about" className="relative bg-[#0C0C0C] flex min-h-screen flex-col items-center justify-center px-5 sm:px-8 md:px-10 py-20 overflow-hidden">
+      <FadeIn delay={0.1} x={-80} y={0} duration={0.9} className="absolute top-[8%] left-[2%] sm:left-[3%] md:left-[4%] w-[80px] sm:w-[100px] md:w-[130px] opacity-40">
+        <img src={moon} alt="" loading="lazy" className="w-full" />
+      </FadeIn>
+
+      <FadeIn delay={0.25} x={-80} y={0} duration={0.9} className="absolute bottom-[5%] left-[4%] sm:left-[7%] md:left-[10%] w-[70px] sm:w-[90px] md:w-[110px] opacity-40">
+        <img src={p59} alt="" loading="lazy" className="w-full" />
+      </FadeIn>
+
+      <FadeIn delay={0.15} x={80} y={0} duration={0.9} className="absolute top-[8%] right-[2%] sm:right-[3%] md:right-[4%] w-[80px] sm:w-[100px] md:w-[130px] opacity-40">
+        <img src={lego} alt="" loading="lazy" className="w-full" />
+      </FadeIn>
+
+      <FadeIn delay={0.3} x={80} y={0} duration={0.9} className="absolute bottom-[5%] right-[4%] sm:right-[7%] md:right-[10%] w-[90px] sm:w-[110px] md:w-[140px] opacity-40">
+        <img src={group} alt="" loading="lazy" className="w-full" />
+      </FadeIn>
+
       <div className="flex flex-col items-center gap-10 sm:gap-14 md:gap-16">
         <FadeIn delay={0} y={40}>
           <h2 className="hero-heading text-center font-black uppercase leading-none tracking-tight text-[clamp(3rem,12vw,160px)]">
