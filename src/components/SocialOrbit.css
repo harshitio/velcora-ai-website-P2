@@ -28,38 +28,21 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: calc(var(--size) * 0.26);
-  height: calc(var(--size) * 0.26);
+  width: calc(var(--size) * 0.52);
+  height: calc(var(--size) * 0.52);
   transform: translate(-50%, -50%);
   z-index: 5;
   border-radius: 50%;
-  background: transparent;
-  border: none;
-  box-shadow: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+  overflow: hidden;
+  border: 3px solid #0a0a0a;
+  box-shadow: 0 0 40px rgba(0,0,0,0.2);
 }
 
 .orbit-center img {
   width: 100%;
   height: 100%;
-  border-radius: 50%;
   object-fit: cover;
-  animation: orbit-photo-pulse 3.4s ease-in-out infinite;
-}
-
-@keyframes orbit-photo-pulse {
-  0%,
-  100% {
-    box-shadow: 0 0 0 0 rgba(0,0,0,0.1);
-    transform: scale(1);
-  }
-  50% {
-    box-shadow: 0 0 20px 4px rgba(0,0,0,0.15);
-    transform: scale(1.03);
-  }
+  display: block;
 }
 
 /* ---- Orbit rings (solid black lines, empty between) ---- */

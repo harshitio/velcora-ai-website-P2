@@ -2,7 +2,6 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import FadeIn from '../components/FadeIn';
 import ImageRevealBackground from '../components/ImageRevealBackground';
 import SocialOrbit from '../components/SocialOrbit';
-import logoUrl from '../assets/logo.png';
 import { GITHUB_URL, X_URL } from '../lib/constants';
 
 export default function HeroSection() {
@@ -31,18 +30,14 @@ export default function HeroSection() {
           <FadeIn delay={0} y={-20}>
             <a
               href="#"
-              className="block"
+              className="block font-black uppercase tracking-tight text-2xl md:text-3xl text-black"
               aria-label="Harshit.io"
               onClick={(e) => {
                 e.preventDefault();
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
             >
-              <img
-                src={logoUrl}
-                alt="Harshit.io logo"
-                className="h-[82px] sm:h-[92px] md:h-[110px] w-auto object-contain"
-              />
+              harshit<span className="tracking-[0.15em]">.io</span>
             </a>
           </FadeIn>
           <FadeIn

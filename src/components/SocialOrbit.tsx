@@ -44,7 +44,6 @@ export default function SocialOrbit() {
         <img
           src="/harshit-profile.jpeg"
           alt="Harshit"
-          className="w-full h-full rounded-full object-cover border-2 border-[#0a0a0a] shadow-lg"
         />
       </div>
 
