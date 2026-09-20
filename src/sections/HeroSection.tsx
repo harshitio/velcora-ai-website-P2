@@ -77,20 +77,6 @@ export default function HeroSection() {
           <br />
           <span className="tracking-[0.2em]">.io</span>
         </h1>
-        <FadeIn delay={0.2} y={30} className="absolute right-[8%] lg:right-[12%] top-[18%] lg:top-1/2 lg:-translate-y-1/2 z-20">
-          <div className="relative">
-            <div className="w-[140px] h-[140px] sm:w-[180px] sm:h-[180px] md:w-[220px] md:h-[220px] lg:w-[260px] lg:h-[260px] rounded-full overflow-hidden border-4 border-black/10 shadow-2xl">
-              <img
-                src="/harshit-profile.jpeg"
-                alt="Harshit — AI Product Builder"
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div className="absolute -bottom-2 -right-2 sm:bottom-0 sm:right-0 bg-[#0C0C0C] text-white text-[10px] sm:text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full shadow-lg">
-              Building
-            </div>
-          </div>
-        </FadeIn>
       </div>
 
       <div className="relative z-30 flex items-end justify-between px-6 md:px-10 pb-7 sm:pb-8 md:pb-10">
