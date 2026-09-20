@@ -16,11 +16,11 @@ const img = (file: string, alt: string) => (
 const items: Item[] = [
   { name: 'X', href: 'https://x.com/Harshit_io', logo: img('x.ico', 'X'), ring: 'inner', angle: 0 },
   { name: 'GitHub', href: 'https://github.com/harshitio', logo: img('github.ico', 'GitHub'), ring: 'inner', angle: 120 },
-  { name: 'LinkedIn', href: 'https://linkedin.com/in/harshit', logo: img('linkedin.ico', 'LinkedIn'), ring: 'inner', angle: 240 },
+  { name: 'LinkedIn', href: 'https://www.linkedin.com/in/harshit-io-43661b42b/', logo: img('linkedin.ico', 'LinkedIn'), ring: 'inner', angle: 240 },
   { name: 'Instagram', href: 'https://instagram.com/harshit.dev1', logo: img('instagram.ico', 'Instagram'), ring: 'mid', angle: 90 },
   {
     name: 'Email',
-    href: 'mailto:braincore189@gmail.com',
+    href: 'https://mail.google.com/mail/?view=cm&fs=1&to=braincore189@gmail.com',
     logo: (
       <svg viewBox="0 0 24 24" fill="#EA4335" aria-hidden="true" className="orbit-logo">
         <path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z" />

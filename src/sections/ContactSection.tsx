@@ -1,11 +1,11 @@
 import FadeIn from '../components/FadeIn';
-import { CONTACT_EMAIL, GITHUB_URL, X_URL, LINKEDIN_URL, INSTAGRAM_URL, MAILTO_URL } from '../lib/constants';
+import { CONTACT_EMAIL, GITHUB_URL, X_URL, LINKEDIN_URL, INSTAGRAM_URL, GMAIL_COMPOSE_URL } from '../lib/constants';
 
 const LINKS = [
-  { label: 'Email', href: MAILTO_URL, display: CONTACT_EMAIL },
+  { label: 'Email', href: GMAIL_COMPOSE_URL, display: CONTACT_EMAIL },
   { label: 'X / Twitter', href: X_URL, display: '@Harshit_io' },
   { label: 'GitHub', href: GITHUB_URL, display: 'harshitio' },
-  { label: 'LinkedIn', href: LINKEDIN_URL, display: 'harshit' },
+  { label: 'LinkedIn', href: LINKEDIN_URL, display: 'harshit-io' },
   { label: 'Instagram', href: INSTAGRAM_URL, display: '@harshit.dev1' },
 ];
 
@@ -32,7 +32,7 @@ export default function ContactSection() {
             <FadeIn key={link.label} delay={i * 0.08} y={20}>
               <a
                 href={link.href}
-                target={link.href.startsWith('mailto:') ? undefined : '_blank'}
+                target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-between rounded-xl border border-[#0C0C0C]/15 p-5 transition-colors duration-200 hover:border-[#0C0C0C]/40 group"
               >

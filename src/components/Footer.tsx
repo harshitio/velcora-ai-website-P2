@@ -1,4 +1,4 @@
-import { GITHUB_URL, X_URL, LINKEDIN_URL, INSTAGRAM_URL, CONTACT_EMAIL, MAILTO_URL } from '../lib/constants';
+import { GITHUB_URL, X_URL, LINKEDIN_URL, INSTAGRAM_URL, CONTACT_EMAIL, GMAIL_COMPOSE_URL } from '../lib/constants';
 
 export default function Footer() {
   return (
@@ -50,12 +50,12 @@ export default function Footer() {
               { label: 'GitHub', href: GITHUB_URL },
               { label: 'LinkedIn', href: LINKEDIN_URL },
               { label: 'Instagram', href: INSTAGRAM_URL },
-              { label: 'Email', href: MAILTO_URL },
+              { label: 'Email', href: GMAIL_COMPOSE_URL },
             ].map((link) => (
               <a
                 key={link.label}
                 href={link.href}
-                target={link.href.startsWith('mailto') ? undefined : '_blank'}
+                target="_blank"
                 rel="noopener noreferrer"
                 className="text-[0.8rem] text-[#D7E2EA]/40 no-underline transition-colors duration-200 hover:text-white"
               >
