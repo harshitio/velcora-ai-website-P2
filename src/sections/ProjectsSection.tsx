@@ -402,6 +402,9 @@ function ProjectCard({ project, index, onOpen }: { project: Project; index: numb
           {project.number}
         </div>
         <div className="absolute inset-0 bg-gradient-to-t from-[#0C0C0C] via-transparent to-transparent opacity-80" />
+        <span className="absolute top-3 left-3 text-[10px] font-medium uppercase tracking-[0.2em] text-[#D7E2EA]/60 bg-[#0C0C0C]/70 backdrop-blur-sm px-2.5 py-1 rounded-md">
+          {project.status}
+        </span>
       </div>
       <div className="p-5 sm:p-6">
         <p className="uppercase tracking-[0.25em] text-[#D7E2EA]/50 text-[11px] mb-2">
@@ -452,9 +455,14 @@ function ProjectDetail({ project, index }: { project: Project; index: number }) 
 
       <div className="max-w-6xl mx-auto relative">
         <div className="mb-10 sm:mb-14">
-          <p className="uppercase tracking-[0.3em] text-[#D7E2EA]/60 text-xs sm:text-sm mb-3">
-            Project {project.number}
-          </p>
+          <div className="flex items-center gap-3 mb-3">
+            <p className="uppercase tracking-[0.3em] text-[#D7E2EA]/60 text-xs sm:text-sm">
+              Project {project.number}
+            </p>
+            <span className="text-[10px] font-medium uppercase tracking-[0.2em] text-[#D7E2EA]/50 bg-[#D7E2EA]/5 border border-[#D7E2EA]/10 px-2.5 py-0.5 rounded">
+              {project.status}
+            </span>
+          </div>
           <h3 className="hero-heading font-black uppercase leading-none tracking-tight text-[clamp(2.2rem,6vw,5rem)] mb-4">
             {project.name}
           </h3>
