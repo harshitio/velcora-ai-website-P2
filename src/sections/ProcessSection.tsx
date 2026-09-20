@@ -3,39 +3,39 @@ import FadeIn from '../components/FadeIn';
 const STEPS = [
   {
     number: '01',
-    name: 'Audit & Blueprint',
+    name: 'Find the Problem',
     description:
-      'Free audit call. We map your workflows, find what is eating your time, and hand you a clear plan with costs and timeline. No jargon, no obligation.',
+      'I start with a real friction point — something that wastes time, breaks workflows, or could be dramatically simpler with AI and software.',
   },
   {
     number: '02',
-    name: 'Architecture & Prototype',
+    name: 'Build a Version',
     description:
-      'We design the system and build a working prototype fast. You see it run on your own business data before we build anything else.',
+      'I design the system and ship a working prototype fast. Real data, real workflows, real outputs — not mockups.',
   },
   {
     number: '03',
-    name: 'Production Build',
+    name: 'Test and Learn',
     description:
-      'Full build with error handling, security, and integrations with your existing tools. We ship in phases so the business keeps running through the whole build.',
+      'I use it, break it, and find what actually matters. The useful part is rarely what I expected at the start.',
   },
   {
     number: '04',
-    name: 'Handover & Support',
+    name: 'Share and Improve',
     description:
-      'Training, documentation, and support after launch. We stay available — the system runs 24/7, and so does our support line.',
+      'I document what worked, what failed, and what changed. Then I iterate — better architecture, better UX, better results.',
   },
 ];
 
 export default function ProcessSection() {
   return (
     <section
-      id="process"
+      id="now"
       className="relative bg-[#0C0C0C] px-5 sm:px-8 md:px-10 py-20 sm:py-24 md:py-32"
     >
       <FadeIn delay={0} y={40}>
         <h2 className="text-center font-black uppercase text-[#D7E2EA] text-[clamp(2.5rem,9vw,120px)] leading-none tracking-tight mb-16 sm:mb-20 md:mb-24">
-          How We Work
+          How I Build
         </h2>
       </FadeIn>
 

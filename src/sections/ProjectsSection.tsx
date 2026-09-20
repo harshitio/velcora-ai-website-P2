@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import LiveProjectButton from '../components/LiveProjectButton';
-import { wa } from '../lib/constants';
 
 interface ProjectImage {
   src: string;
@@ -19,7 +18,8 @@ interface Project {
   built: string[];
   stack: string[];
   images: ProjectImage[];
-  cta: string;
+  status: 'live' | 'prototype' | 'archived' | 'experimental';
+  lesson: string;
   repo?: string;
   live?: string;
 }
@@ -27,253 +27,258 @@ interface Project {
 const PROJECTS: Project[] = [
   {
     number: '01',
-    name: 'Velcora Quote Generator',
+    name: 'Quote Generator',
     category: 'AI Productivity · Web App',
     tagline:
-      'Turn a one-line client brief into a polished, branded, print-ready quotation in seconds — not hours.',
+      'Turn a one-line client brief into a polished, branded, print-ready quotation in seconds.',
     problem:
-      'Freelancers and agencies rebuild quotes from scratch every single time — same scope, same pricing, same terms, retyped daily. Slow quotes cost them deals, and every quote goes out slightly different.',
+      'Freelancers and agencies rebuild quotes from scratch every time — same scope, same pricing, retyped daily. Slow quotes cost deals.',
     solution:
-      'An AI quoting tool. Drop in a one-line brief, and the system drafts the full quotation — scope, deliverables, timeline, pricing, payment schedule, terms. Every figure stays editable, and totals plus tax recalculate live as you type.',
+      'An AI quoting tool. Drop in a one-line brief, and the system drafts the full quotation — scope, deliverables, timeline, pricing, payment schedule, terms. Every figure stays editable, and totals recalculate live.',
     result:
-      'Quotes in seconds instead of hours. Every quote on-brand and consistent, edit any figure and totals update instantly — no more spreadsheet arithmetic before sending.',
+      'Quotes in seconds instead of hours. Every quote on-brand and consistent.',
     built: [
-      'Designed and built a clean Vite + React 19 + TypeScript SPA from scratch — custom Tailwind v4 theme, no heavy scaffolding, zero dead dependencies.',
-      'Used the 44 shadcn UI components and the QuoteSheet engine — fully typed, built in-house.',
-      'Added a Vercel server function that drafts a complete quotation from a one-line brief using the Gemini API.',
-      'Hardened it: custom Tailwind v4 theme, local-first quote store, live tax/total recalculation, vercel.json SPA rewrite.',
+      'Vite + React 19 + TypeScript SPA with custom Tailwind v4 theme.',
+      '44 shadcn UI components and a fully typed QuoteSheet engine.',
+      'Vercel server function drafts complete quotations from a one-line brief via the Gemini API.',
+      'Local-first quote store, live tax/total recalculation.',
     ],
-    stack: ['Vite', 'React 19', 'TypeScript', 'Tailwind v4', 'shadcn/ui', 'Gemini API', 'Vercel'],
+    stack: ['Vite', 'React 19', 'TypeScript', 'Tailwind v4', 'shadcn/ui', 'Gemini API'],
     images: [
-      { src: '/projects/quote-generator/col2-image.webp', caption: 'The final quote sheet — branded, print-ready, every figure editable' },
+      { src: '/projects/quote-generator/col2-image.webp', caption: 'Branded, print-ready quote sheet with live recalculation' },
       { src: '/projects/quote-generator/col1-image1.webp', caption: 'Start from a saved layout or a blank sheet' },
       { src: '/projects/quote-generator/col1-image2.webp', caption: 'AI drafts the full quote from a one-line brief' },
     ],
-    repo: 'https://github.com/VELCORA/velcora-quote-generator-P1',
+    status: 'live',
+    lesson: 'The useful part was not the AI — it was the editable output. People trust what they can tweak.',
+    repo: 'https://github.com/harshitio/velcora-quote-generator-P1',
     live: 'https://velcora-quote-generator-p1.vercel.app',
-    cta: wa('Hi Velcora AI, I want a quote generator like this for my business.'),
   },
   {
     number: '02',
-    name: 'Velcora Lead Pipeline CRM',
+    name: 'Lead Pipeline CRM',
     category: 'Sales Ops · Web App',
     tagline:
-      'Capture every lead from one form, auto-score it, and move it through the pipeline to won — nothing slips through the cracks.',
+      'Capture every lead from one form, auto-score it, and move it through the pipeline to won.',
     problem:
-      'Agencies and service businesses lose track of incoming demand. Leads land in DMs and inboxes, never get a follow-up, and deals quietly die. No system, no score, no pipeline — just chaos.',
+      'Agencies lose track of incoming demand. Leads land in DMs and inboxes, never get followed up, and deals quietly die.',
     solution:
-      'A single-tenant CRM built on Supabase. One intake form captures the lead, auto-scores it 0–100 (hot / warm / cold), and drops it into a kanban pipeline: new → qualified → proposal → won or lost.',
+      'A single-tenant CRM on Supabase. One intake form captures the lead, auto-scores it 0–100 (hot / warm / cold), and drops it into a kanban pipeline: new → qualified → proposal → won or lost.',
     result:
-      'Every lead captured in seconds with a score and a next action. Zero leads slip through the cracks — follow-ups happen on schedule, and the won rate goes up.',
+      'Every lead captured with a score and a next action. Zero leads slip through.',
     built: [
-      'Designed and built the pipeline CRM from scratch — intake form, auto-score engine, and kanban pipeline — fully typed end to end.',
-      'Supabase schema: leads, lead_activities, notifications — RLS on, anon + authenticated access for the no-login single-tenant flow.',
-      'Built the intake flow with auto-scoring and hot / warm / cold priority, plus dynamic date handling and email validation.',
-      'Made it Vercel-ready: vercel.json SPA rewrite, engines pinned, .env.example committed, secrets gitignored. Build + typecheck + lint all pass.',
+      'Pipeline CRM from scratch — intake form, auto-score engine, and kanban pipeline.',
+      'Supabase schema with RLS, anon + authenticated access for the no-login single-tenant flow.',
+      'Auto-scoring with hot / warm / cold priority, dynamic date handling, email validation.',
+      'Vercel-ready with SPA rewrite, engines pinned, build + typecheck + lint passing.',
     ],
-    stack: ['Vite', 'React 18', 'TypeScript', 'Tailwind 3', 'Supabase', 'Vercel'],
+    stack: ['Vite', 'React 18', 'TypeScript', 'Tailwind 3', 'Supabase'],
     images: [
       { src: '/projects/lead-pipeline/col2-image.webp', caption: 'Intake form — auto-scored, hot / warm / cold' },
       { src: '/projects/lead-pipeline/col1-image1.webp', caption: 'Overview — every lead and stage at a glance' },
-      { src: '/projects/lead-pipeline/col1-image2.webp', caption: 'Kanban pipeline — new → qualified → proposal → won' },
+      { src: '/projects/lead-pipeline/col1-image2.webp', caption: 'Kanban pipeline — new → qualified → won' },
     ],
-    repo: 'https://github.com/VELCORA/velcora-single-tenant-lead-pipeline-crm-p5',
+    status: 'live',
+    lesson: 'Auto-scoring changes behavior. When leads have a number attached, people actually follow up.',
+    repo: 'https://github.com/harshitio/velcora-single-tenant-lead-pipeline-crm-p5',
     live: 'https://velcora-single-tenant-lead-pipeline.vercel.app',
-    cta: wa('Hi Velcora AI, I want a lead pipeline CRM like this for my business.'),
   },
   {
     number: '03',
-    name: 'Velcora Enterprise Doc Processing',
-    category: 'Document AI · Enterprise Web App',
+    name: 'Enterprise Doc Processing',
+    category: 'Document AI · Web App',
     tagline:
-      'Extract, audit, and automate enterprise financial paperwork — invoices, purchase orders, leases — in seconds, not days.',
+      'Extract, audit, and automate enterprise financial paperwork — invoices, POs, leases — in seconds.',
     problem:
-      'Finance teams key invoices, POs, and leases into systems by hand. It is slow, error-prone, and no one checks whether the line items even add up — until an audit finds out.',
+      'Finance teams key invoices, POs, and leases into systems by hand. Slow, error-prone, and nobody checks the math until an audit finds out.',
     solution:
-      'A multimodal OCR workbench. Ingest PDFs, PNGs, JPGs, TXT, or CSV; the engine parses structured fields, validates the line-item math, flags risk anomalies, and triggers ERP webhooks — all in one pipeline.',
+      'A multimodal OCR workbench. Ingest PDFs, PNGs, JPGs, TXT, or CSV; the engine parses structured fields, validates line-item math, flags risk anomalies, and triggers ERP webhooks.',
     result:
-      'Documents processed in seconds instead of hours. Every field extracted, every total verified, every anomaly flagged before it becomes a problem — and the ERP gets the data automatically.',
+      'Documents processed in seconds. Every field extracted, every total verified, every anomaly flagged.',
     built: [
-      'Built the intake workbench: upload, paste text, or generate a test invoice across six document types — invoices, POs, contracts, receipts, tax forms, financial statements.',
-      'Wired the multimodal OCR pipeline that parses structured fields from the document and feeds the inspector.',
-      'Built the Structured Inspector — validates line-item math and detects risk anomalies so bad data never passes silently.',
-      'Added the Automation & API hub: rule-based triggers, live webhook log, and an SDK surface for integrating with enterprise apps.',
+      'Intake workbench: upload, paste text, or generate test invoices across six document types.',
+      'Multimodal OCR pipeline that parses structured fields and feeds the inspector.',
+      'Structured Inspector — validates line-item math and detects risk anomalies.',
+      'Automation & API hub: rule-based triggers, live webhook log, SDK surface.',
     ],
-    stack: ['TypeScript', 'Vite', 'React', 'Multimodal OCR', 'Vercel'],
+    stack: ['TypeScript', 'Vite', 'React', 'Multimodal OCR'],
     images: [
-      { src: '/projects/doc-pipeline/col1-image1.webp', caption: 'Document Workbench — ingest, paste, or generate a test invoice' },
+      { src: '/projects/doc-pipeline/col1-image1.webp', caption: 'Document Workbench — ingest, paste, or generate test invoices' },
       { src: '/projects/doc-pipeline/col1-image2.webp', caption: 'Structured Inspector — parsed fields with math + risk validation' },
       { src: '/projects/doc-pipeline/col2-image.webp', caption: 'Automation & API — workflow rules, webhook log, SDK' },
     ],
-    repo: 'https://github.com/VELCORA/velcora-enterprise--doc---P6',
+    status: 'prototype',
+    lesson: 'Validation is more valuable than extraction. Finding the wrong number matters more than reading the right one.',
+    repo: 'https://github.com/harshitio/velcora-enterprise--doc---P6',
     live: 'https://velcora-enterprise-doc-p6.vercel.app',
-    cta: wa('Hi Velcora AI, I want enterprise document processing like this for my business.'),
   },
   {
     number: '04',
-    name: 'Velcora Salon OS',
+    name: 'Salon OS',
     category: 'Vertical SaaS · Web App',
     tagline:
-      'Turn salon chaos into effortless luxury — unified scheduling, real-time inventory, stylist commissions, and autonomous AI client retention.',
+      'Unified scheduling, real-time inventory, stylist commissions, and AI client retention for salons.',
     problem:
-      'Salons juggle chairs, bookings, color stock, stylist pay, and client reminders across notebooks and apps. Double-bookings, empty chairs, low-stock shocks, and no-shows quietly eat the margin.',
+      'Salons juggle chairs, bookings, color stock, stylist pay, and client reminders across notebooks and apps. Double-bookings and no-shows eat the margin.',
     solution:
-      'A salon operating system: chair scheduling matrix, barcode color inventory with auto-deduct, stylist roster with commission splits, and AI automations that send SMS / WhatsApp reminders and reorder stock — with an AI copilot on top.',
+      'A salon operating system: chair scheduling matrix, barcode color inventory with auto-deduct, stylist roster with commission splits, and AI automations for SMS / WhatsApp reminders.',
     result:
-      'Every chair filled and tracked, stock never runs dry, commissions split automatically, and AI notifications cut no-shows toward zero — while the salon runs itself.',
+      'Every chair filled and tracked, stock never runs dry, commissions split automatically.',
     built: [
-      'Built the overview command center: today\'s chairs, active services, low-stock alerts, and daily gross with auto commission splits.',
-      'Built the appointments workspace with a chair scheduling matrix plus a client booking demo portal.',
-      'Wired the color bar: barcode inventory tracking with station-mix simulation and auto-deduct on service completion.',
-      'Added AI automations — SMS / WhatsApp client retention bot, no-show alerts — and a Velcora AI Copilot layer.',
+      'Overview command center: today\'s chairs, active services, low-stock alerts, daily gross with commission splits.',
+      'Appointments workspace with a chair scheduling matrix plus a client booking demo portal.',
+      'Color bar: barcode inventory tracking with station-mix simulation and auto-deduct on service completion.',
+      'AI automations — SMS / WhatsApp client retention bot, no-show alerts, and a Velcora AI Copilot layer.',
     ],
-    stack: ['TypeScript', 'Vite', 'React', 'Tailwind', 'AI Automations', 'Vercel'],
+    stack: ['TypeScript', 'Vite', 'React', 'Tailwind', 'AI Automations'],
     images: [
-      { src: '/projects/salon-os/col1-image1.webp', caption: 'Overview — chairs booked, stock alerts, daily gross with commission splits' },
-      { src: '/projects/salon-os/col1-image2.webp', caption: 'Appointments — chair scheduling matrix + client booking demo' },
+      { src: '/projects/salon-os/col1-image1.webp', caption: 'Overview — chairs booked, stock alerts, daily gross' },
+      { src: '/projects/salon-os/col1-image2.webp', caption: 'Appointments — chair scheduling matrix + client booking' },
       { src: '/projects/salon-os/col2-image.webp', caption: 'Inventory — color bar with barcode tracking and auto-deduct' },
     ],
-    repo: 'https://github.com/VELCORA/velcora-ai-salon-os-p9',
-    live: 'https://velcora-ai-salon-os-p9.vercel.app',
-    cta: wa('Hi Velcora AI, I want a Salon OS like this for my salon.'),
+    status: 'prototype',
+    lesson: 'Vertical SaaS works when you understand the daily workflow. The value is in the small details that save real minutes.',
   },
   {
     number: '05',
-    name: 'Velcora AI Agent',
+    name: 'AI Business Agent',
     category: 'AI Co-Pilot · Chat App',
     tagline:
-      'A business operations co-pilot with five tuned workflow modes — qualify leads, draft emails, summarize meetings, research markets, and write proposals.',
+      'A business operations co-pilot with five tuned workflow modes — qualify leads, draft emails, summarize meetings, research markets, write proposals.',
     problem:
-      'Every business task lives in a different tool in a different style. Qualifying a lead, drafting outreach, summarizing a meeting, researching a market, and packing a proposal all need different thinking — so teams wing it every time.',
+      'Every business task lives in a different tool. Qualifying a lead, drafting outreach, summarizing a meeting — all need different thinking, so teams wing it.',
     solution:
-      'One co-pilot, five specialist modes. Each mode carries a tuned system prompt — Lead Qualifier, Email Drafter, Meeting Summarizer, Market Researcher, Proposal Writer — so the AI answers with the right structure, tone, and output format for the task.',
+      'One co-pilot, five specialist modes. Each mode carries a tuned system prompt — Lead Qualifier, Email Drafter, Meeting Summarizer, Market Researcher, Proposal Writer.',
     result:
-      'Anyone in the business gets specialist-grade output in seconds — scored leads, ready-to-send emails, meeting action items, competitive research, and structured proposals — without switching tools or training an AI.',
+      'Specialist-grade output in seconds — scored leads, ready-to-send emails, meeting action items, competitive research.',
     built: [
-      'Built the co-pilot on Next.js 16 + the AI SDK with a Velcora-branded chat experience and persistent sessions.',
-      'Defined five Velcora workflow modes in lib/ai/modes.ts — each with icon, color, badge, starter prompts, and a tuned BANT/sales/outreach system prompt.',
-      'Used the Lead Qualifier\'s system prompt to output a structured Qualification Card: lead score 0–100, hot/warm/cold, red flags, next action — via the createDocument tool.',
-      'Wired session auth, chat history persistence, and a multi-model switcher across leading LLMs.',
+      'Co-pilot on Next.js 16 + the AI SDK with a branded chat experience and persistent sessions.',
+      'Five workflow modes — each with icon, color, badge, starter prompts, and a tuned system prompt.',
+      'Lead Qualifier outputs a structured Qualification Card: lead score, red flags, next action.',
+      'Session auth, chat history persistence, multi-model switcher across leading LLMs.',
     ],
-    stack: ['Next.js 16', 'AI SDK', 'TypeScript', 'Drizzle', 'Vercel'],
+    stack: ['Next.js 16', 'AI SDK', 'TypeScript', 'Drizzle'],
     images: [
       { src: '/projects/ai-agent/col1-image1.webp', caption: 'Onboarding — five workflow modes with starter prompts' },
       { src: '/projects/ai-agent/col1-image2.webp', caption: 'Chat thread — prompt runs through the co-pilot' },
       { src: '/projects/ai-agent/col2-image.webp', caption: 'Model switcher — run the agent on your choice of LLM' },
     ],
-    repo: 'https://github.com/VELCORA/velcora-ai-agent-P7',
+    status: 'prototype',
+    lesson: 'The useful part of an agent is not just the model — it is the workflow, state, and checks around it.',
+    repo: 'https://github.com/harshitio/velcora-ai-agent-P7',
     live: 'https://velcora-ai-agent-p6.vercel.app',
-    cta: wa('Hi Velcora AI, I want an AI co-pilot like this for my business.'),
   },
   {
     number: '06',
-    name: 'Velcora Knowledge Chatbot Hub',
+    name: 'Knowledge Chatbot Hub',
     category: 'Customer Intelligence · Platform',
     tagline:
-      'Turn your documents into a live knowledge base, power an AI chatbot, and orchestrate conversations across webchat, Slack, WhatsApp, and email — from one workspace.',
+      'Turn documents into a live knowledge base, power an AI chatbot, and orchestrate conversations across webchat, Slack, WhatsApp, and email.',
     problem:
-      'Support and success teams drown in tickets. Customer questions repeat across webchat, WhatsApp, Slack, and email — and every answer lives in someone\'s head or a folder nobody can search.',
+      'Support teams drown in tickets. Customer questions repeat across channels — and every answer lives in someone\'s head or a folder nobody can search.',
     solution:
-      'A customer-intelligence platform with four tiers: ingest documents into a knowledge base, embed them for retrieval, retrieve with confidence scoring, and generate sourced answers. Plus an omnichannel conversation hub that triages by sentiment, intent, and urgency.',
+      'A customer-intelligence platform: ingest documents into a knowledge base, embed them for retrieval, generate sourced answers. Plus an omnichannel conversation hub with sentiment, intent, and urgency tagging.',
     result:
-      'The AI answers customers 24/7 with sourced, confidence-scored answers straight from your documents. Conversations get triaged and routed automatically — tickets die down, deflection savings show up in the ROI model.',
+      'AI answers customers 24/7 with sourced, confidence-scored answers from your documents.',
     built: [
-      'Built the AI Playground — a live chat modal with an instant welcome message, 99.8% confidence score, and source citations pulled from the knowledge base.',
-      'Wired the knowledge base: ingest documents, get sourced answers with confidence scores via the Gemini-backed engine.',
-      'Built the Conversation Hub — triage, sentiment, intent, and urgency tagging across channels.',
-      'Added the architecture view (4-tier ingest → embed → retrieve → generate), ROI calculator, security matrix, and plan picker that opens provisioning.',
+      'AI Playground — live chat modal with instant welcome message, 99.8% confidence score, and source citations.',
+      'Knowledge base: ingest documents, get sourced answers with confidence scores via the Gemini-backed engine.',
+      'Conversation Hub — triage, sentiment, intent, and urgency tagging across channels.',
+      'Architecture view (4-tier ingest → embed → retrieve → generate), ROI calculator, security matrix.',
     ],
-    stack: ['Vite', 'React 19', 'TypeScript', 'Tailwind v4', 'Gemini', 'Express', 'Vercel'],
+    stack: ['Vite', 'React 19', 'TypeScript', 'Tailwind v4', 'Gemini', 'Express'],
     images: [
-      { src: '/projects/chatbot-hub/col1-image1.webp', caption: 'Hero — autonomy platform with Live Studio, Vector Hub, ROI, Pricing' },
+      { src: '/projects/chatbot-hub/col1-image1.webp', caption: 'Autonomy platform with Live Studio, Vector Hub, ROI, Pricing' },
       { src: '/projects/chatbot-hub/col1-image2.webp', caption: 'AI Playground — sourced answers with confidence score + citations' },
       { src: '/projects/chatbot-hub/col2-image.webp', caption: 'Knowledge Base — ingest documents, get sourced answers' },
     ],
-    repo: 'https://github.com/VELCORA/velcora-ai-knowledge-chatbot-hub-P10',
+    status: 'prototype',
+    lesson: 'Confidence scoring changes trust. When users see a score, they trust the answer more than when they don\'t.',
+    repo: 'https://github.com/harshitio/velcora-ai-knowledge-chatbot-hub-P10',
     live: 'https://velcora-ai-knowledge-chatbot-hub-p1.vercel.app',
-    cta: wa('Hi Velcora AI, I want a knowledge chatbot hub like this for my business.'),
   },
   {
     number: '07',
-    name: 'Velcora High-Fidelity Studio',
+    name: 'High-Fidelity Studio',
     category: 'Data Intelligence · Web App',
     tagline:
-      'An autonomous web scraper, data-intelligence studio, and workflow-automation builder — with a deep-focus suite to do the work distraction-free.',
+      'An autonomous web scraper, data-intelligence studio, and workflow-automation builder with a deep-focus suite.',
     problem:
-      'Market research means manually copy-pasting from messy websites, cleaning data in spreadsheets, and redoing the same extraction every week. Founders and analysts burn hours turning the open web into structured intelligence.',
+      'Market research means manually copy-pasting from messy websites, cleaning data in spreadsheets, and redoing the same extraction every week.',
     solution:
-      'A cinematic single-page workspace. Paste any public URL into the Scraper Studio and get structured JSON — title, summary, key metrics, items, sentiment, confidence — powered by Gemini. Plus a data engine, visual automation builder, and a focus station.',
+      'A cinematic single-page workspace. Paste any URL into the Scraper Studio and get structured JSON — title, summary, key metrics, sentiment, confidence. Plus a data engine, visual automation builder, and focus station.',
     result:
-      'Any website becomes clean, structured data in one click — competitor price matrices, tech digests, lead enrichment — and repeatable workflows run on cron instead of weekends.',
+      'Any website becomes clean, structured data in one click — repeatable workflows run on cron instead of weekends.',
     built: [
-      'Built the Scraper Studio: paste any public URL, get a structured JSON extract (title, summary, key metrics, items, sentiment, confidence) via the Gemini-powered backend.',
-      'Added preset scrape targets — TechCrunch AI Pulse, GitHub Trending, e-commerce price matrix, Hacker News — with structured JSON / data grid / summary / cURL API output tabs.',
-      'Built the Automation Builder: visual extract → AI → dispatch pipelines with cron deployment, plus the Data Engine to clean and normalize raw input.',
-      'Built the Focus Station: Pomodoro timer (25m / 45m / 90m) with a task queue and procedural ambient soundscapes — Golden Hour, Still Water, Deep Woods.',
+      'Scraper Studio: paste any URL, get structured JSON via the Gemini-powered backend.',
+      'Preset scrape targets — TechCrunch, GitHub Trending, e-commerce price matrix, Hacker News.',
+      'Automation Builder: visual extract → AI → dispatch pipelines with cron deployment.',
+      'Focus Station: Pomodoro timer with task queues and procedural ambient soundscapes.',
     ],
     stack: ['Vite', 'React 19', 'TypeScript', 'Tailwind', 'Gemini', 'Express'],
     images: [
-      { src: '/projects/high-fidelity/col1-image1.webp', caption: 'Hero — clarity in an endlessly noisy universe' },
+      { src: '/projects/high-fidelity/col1-image1.webp', caption: 'Clarity in an endlessly noisy universe' },
       { src: '/projects/high-fidelity/col1-image2.webp', caption: 'Scraper Studio — preset targets + JSON / grid / cURL outputs' },
       { src: '/projects/high-fidelity/col2-image.webp', caption: 'Automation + Focus — pipelines, cron, Pomodoro, ambient sound' },
     ],
-    repo: 'https://github.com/VELCORA/velcora-ai-high-fidelity-p8',
-    live: 'https://velcora-ai-high-fidelity-marketing.vercel.app',
-    cta: wa('Hi Velcora AI, I want a web scraping and data intelligence studio like this.'),
+    status: 'prototype',
+    lesson: 'The scraper is the hook, but the automation pipeline is the product. Extraction without workflow is just a demo.',
   },
   {
     number: '08',
-    name: 'Velcora Lead Engine',
+    name: 'Lead Engine',
     category: 'Lead Generation · n8n Workflow',
     tagline:
-      'Turn any list of business queries into a clean, deduped email database — scraped from the map index with zero paid APIs and zero per-lead fees.',
+      'Turn any list of business queries into a clean, deduped email database — scraped from the map index with zero per-lead fees.',
     problem:
-      'Building a lead list means hours of manual searching, copy-pasting, and spreadsheet cleaning — and most scraping tools charge per record or break on messy listings. Small teams simply cannot afford it.',
+      'Building a lead list means hours of manual searching and spreadsheet cleaning — and most scraping tools charge per record.',
     solution:
-      'A map-index email engine. Give it a query list — like "cafes in Mumbai" — and it searches the map index for matching businesses, pulls each listing, extracts emails with pure regex (no third-party APIs, no per-lead cost), dedupes everything, and pushes the clean list into Google Sheets.',
+      'A map-index email engine. Give it a query list — like "cafes in Mumbai" — and it searches the map index, extracts emails with pure regex, dedupes everything, and pushes the clean list into Google Sheets.',
     result:
-      'A ready-to-pitch email database from any query list — deduped, clean, and in your CRM sheet for $0 in API costs, with each query running as its own background execution.',
+      'A ready-to-pitch email database from any query list — deduped, clean, and in your CRM sheet for $0 in API costs.',
     built: [
-      'Engineered the query runner: feeds each query through the map-index search, extracts business listing URLs, then batches every page fetch across 26 core-only nodes.',
-      'Built the email extractor in pure code — regex-based extraction straight from raw listing HTML, so there are no third-party APIs and no per-lead fees.',
-      'Wired dedupe and filtering so the final list is clean, unique, and dump-ready for outreach.',
-      'Connected the Google Sheets sink with per-query background execution so every email lands in the CRM automatically.',
+      'Query runner: feeds each query through map-index search, extracts business listing URLs.',
+      'Email extractor in pure code — regex-based extraction, no third-party APIs, no per-lead fees.',
+      'Dedupe and filtering so the final list is clean, unique, and dump-ready for outreach.',
+      'Google Sheets sink with per-query background execution.',
     ],
     stack: ['n8n', 'Web Scraping', 'Google Sheets', 'Regex', 'Automation'],
     images: [
-      { src: '/projects/lead-engine/col1-image1.webp', caption: 'The full 26-node engine — query runner, extractor, dedupe, and sheet sink' },
-      { src: '/projects/lead-engine/col1-image2.webp', caption: 'Map-index search — matching business listings pulled from each query' },
-      { src: '/projects/lead-engine/col2-image.webp', caption: 'Email extraction — regex parser pulling clean emails from raw listings' },
+      { src: '/projects/lead-engine/col1-image1.webp', caption: 'The full 26-node engine — query runner, extractor, dedupe, sheet sink' },
+      { src: '/projects/lead-engine/col1-image2.webp', caption: 'Map-index search — matching business listings from each query' },
+      { src: '/projects/lead-engine/col2-image.webp', caption: 'Email extraction — regex parser pulling clean emails' },
     ],
-    repo: 'https://github.com/VELCORA/velcora-lead-gen-system-P3',
-    cta: wa('Hi Velcora AI, I want a lead generation engine like this for my business.'),
+    status: 'live',
+    lesson: 'The best automation is invisible. This runs on cron and nobody thinks about it — that\'s the point.',
+    repo: 'https://github.com/harshitio/velcora-lead-gen-system-P3',
   },
   {
     number: '09',
-    name: 'Velcora SDR Pipeline',
+    name: 'SDR Pipeline',
     category: 'Sales Automation · n8n Workflow',
     tagline:
       'Four autonomous agents run your entire sales outreach — capture, qualify, follow up, and recover no-shows without a single manual email.',
     problem:
-      'Outreach dies from inconsistency. Leads land and nobody follows up on time, follow-up counts are never tracked, calendar bookings and CRM records drift apart, and no-shows never get a second chance. Deals leak quietly.',
+      'Outreach dies from inconsistency. Leads land, nobody follows up on time, follow-up counts are never tracked, and no-shows never get a second chance.',
     solution:
-      'A 36-node sales operating system running four autonomous agents — a CRM Agent that ingests fresh leads daily and logs them, a Follow-Up Agent that personalizes and sends a three-touch email sequence, a Concierge Agent that watches your calendar and updates lead status the moment calls book, and a No-Show Agent that sends polite reschedule emails automatically.',
+      'A 36-node sales operating system with four autonomous agents — CRM ingestion, multi-touch follow-up, calendar concierge, and no-show recovery.',
     result:
-      'Every lead touched on schedule, every follow-up personalized and counted, bookings pulled out of the sequence the instant they happen, no-shows recovered automatically — a complete outreach lifecycle running in the background.',
+      'Every lead touched on schedule, every follow-up personalized, bookings pulled out instantly, no-shows recovered automatically.',
     built: [
-      'Designed and built the four-agent architecture — CRM ingestion, multi-touch follow-up, calendar concierge, and no-show recovery — wired across 36 nodes.',
-      'Built the CRM Agent: scheduled sync from the lead list into the master CRM sheet, with data formatting and a full list reset ready for the next batch.',
-      'Built the Follow-Up Agent: an LLM engine that personalizes three sequential emails by name, role, company, and industry, sent via Gmail with every follow-up logged back to the CRM.',
-      'Built the Concierge and No-Show Agents: calendar-triggered status flips for booked calls and automatic reschedule outreach, with protection against double emails.',
+      'Four-agent architecture — CRM ingestion, multi-touch follow-up, calendar concierge, no-show recovery.',
+      'CRM Agent: scheduled sync from lead list into master CRM sheet with data formatting.',
+      'Follow-Up Agent: LLM engine personalizes three sequential emails by name, role, company, industry.',
+      'Concierge and No-Show Agents: calendar-triggered status flips and automatic reschedule outreach.',
     ],
     stack: ['n8n', 'Google Sheets', 'Gmail', 'Google Calendar', 'LLM', 'Automation'],
     images: [
-      { src: '/projects/sdr-pipeline/col1-image1.webp', caption: 'The full 36-node pipeline — CRM, follow-up, concierge, and no-show agents' },
-      { src: '/projects/sdr-pipeline/col1-image2.webp', caption: 'Follow-up engine — three-touch LLM-personalized email sequences' },
-      { src: '/projects/sdr-pipeline/col2-image.webp', caption: 'CRM + calendar automation — bookings pulled out of the sequence instantly' },
+      { src: '/projects/sdr-pipeline/col1-image1.webp', caption: 'The full 36-node pipeline — CRM, follow-up, concierge, no-show' },
+      { src: '/projects/sdr-pipeline/col1-image2.webp', caption: 'Follow-up engine — three-touch LLM-personalized sequences' },
+      { src: '/projects/sdr-pipeline/col2-image.webp', caption: 'CRM + calendar automation — bookings pulled out instantly' },
     ],
-    repo: 'https://github.com/VELCORA/lead-gen-pipeline---P4',
-    cta: wa('Hi Velcora AI, I want an AI SDR pipeline like this for my sales team.'),
+    status: 'live',
+    lesson: 'Agents work best when each one does one thing well. The pipeline is just four specialists connected by data.',
+    repo: 'https://github.com/harshitio/velcora-lead-gen-system-P3',
   },
 ];
 
@@ -372,6 +377,13 @@ function ImageLightbox({
 }
 
 function ProjectCard({ project, index, onOpen }: { project: Project; index: number; onOpen: () => void }) {
+  const statusColors: Record<Project['status'], string> = {
+    live: 'bg-green-500/20 text-green-400 border-green-500/30',
+    prototype: 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30',
+    experimental: 'bg-blue-500/20 text-blue-400 border-blue-500/30',
+    archived: 'bg-gray-500/20 text-gray-400 border-gray-500/30',
+  };
+
   return (
     <motion.button
       type="button"
@@ -399,15 +411,20 @@ function ProjectCard({ project, index, onOpen }: { project: Project; index: numb
         <div className="absolute inset-0 bg-gradient-to-t from-[#0C0C0C] via-transparent to-transparent opacity-80" />
       </div>
       <div className="p-5 sm:p-6">
-        <p className="uppercase tracking-[0.25em] text-[#D7E2EA]/50 text-[11px] mb-2">
-          {project.category}
-        </p>
+        <div className="flex items-center gap-3 mb-2">
+          <p className="uppercase tracking-[0.25em] text-[#D7E2EA]/50 text-[11px]">
+            {project.category}
+          </p>
+          <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full border ${statusColors[project.status]}`}>
+            {project.status}
+          </span>
+        </div>
         <h3 className="hero-heading font-black uppercase leading-none tracking-tight text-[clamp(1.3rem,3vw,1.8rem)] mb-2">
           {project.name}
         </h3>
         <p className="text-[#D7E2EA]/70 text-sm leading-relaxed line-clamp-2">{project.tagline}</p>
         <p className="mt-4 inline-flex items-center gap-2 text-xs font-medium uppercase tracking-widest text-[#D7E2EA]/70 group-hover:text-[#D7E2EA] transition-colors duration-200">
-          View Case Study
+          View Build
           <svg
             width="14"
             height="14"
@@ -433,6 +450,13 @@ function ProjectDetail({ project, index }: { project: Project; index: number }) 
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const flipped = index % 2 === 1;
 
+  const statusColors: Record<Project['status'], string> = {
+    live: 'bg-green-500/20 text-green-400 border-green-500/30',
+    prototype: 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30',
+    experimental: 'bg-blue-500/20 text-blue-400 border-blue-500/30',
+    archived: 'bg-gray-500/20 text-gray-400 border-gray-500/30',
+  };
+
   const Btn =
     'inline-flex items-center gap-2 rounded-full border border-[#D7E2EA]/60 px-6 py-3 text-sm font-medium uppercase tracking-widest text-[#D7E2EA] transition-colors duration-200 hover:bg-[#D7E2EA] hover:text-[#0C0C0C]';
 
@@ -447,9 +471,14 @@ function ProjectDetail({ project, index }: { project: Project; index: number }) 
 
       <div className="max-w-6xl mx-auto relative">
         <div className="mb-10 sm:mb-14">
-          <p className="uppercase tracking-[0.3em] text-[#D7E2EA]/60 text-xs sm:text-sm mb-3">
-            Project {project.number}
-          </p>
+          <div className="flex items-center gap-3 mb-3">
+            <p className="uppercase tracking-[0.3em] text-[#D7E2EA]/60 text-xs sm:text-sm">
+              Project {project.number}
+            </p>
+            <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full border ${statusColors[project.status]}`}>
+              {project.status}
+            </span>
+          </div>
           <h3 className="hero-heading font-black uppercase leading-none tracking-tight text-[clamp(2.2rem,6vw,5rem)] mb-4">
             {project.name}
           </h3>
@@ -471,13 +500,13 @@ function ProjectDetail({ project, index }: { project: Project; index: number }) 
               </div>
               <div>
                 <p className="uppercase tracking-widest text-[#D7E2EA]/50 text-xs mb-2">
-                  What It Does
+                  What I Built
                 </p>
                 <p className="text-[#D7E2EA]/85 leading-relaxed">{project.solution}</p>
               </div>
               <div>
                 <p className="uppercase tracking-widest text-[#D7E2EA]/50 text-xs mb-2">
-                  How We Built It
+                  How It Was Built
                 </p>
                 <ol className="grid gap-2.5">
                   {project.built.map((step, i) => (
@@ -508,6 +537,12 @@ function ProjectDetail({ project, index }: { project: Project; index: number }) 
                   The Result
                 </p>
                 <p className="text-[#D7E2EA]/85 leading-relaxed">{project.result}</p>
+              </div>
+              <div className="border-t border-[#D7E2EA]/10 pt-4">
+                <p className="uppercase tracking-widest text-[#D7E2EA]/50 text-xs mb-2">
+                  Lesson
+                </p>
+                <p className="text-[#D7E2EA]/85 leading-relaxed italic">{project.lesson}</p>
               </div>
             </div>
 
@@ -541,7 +576,7 @@ function ProjectDetail({ project, index }: { project: Project; index: number }) 
                   Live Demo
                 </a>
               )}
-              <LiveProjectButton href={project.cta} />
+              {project.live && <LiveProjectButton href={project.live} />}
             </div>
           </div>
 
@@ -649,7 +684,7 @@ export default function ProjectsSection() {
 
           <div className="mt-14 sm:mt-20 -translate-y-[5%] text-center">
             <p className="text-[#D7E2EA]/60 text-base sm:text-lg max-w-2xl mx-auto mb-8">
-              Every project below is built from scratch — real engines, real deployments, no templates. See the full case studies.
+              Every project is built from scratch — real engines, real deployments, no templates.
             </p>
             <button
               type="button"

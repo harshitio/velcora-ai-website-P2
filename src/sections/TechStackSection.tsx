@@ -3,23 +3,23 @@ import FadeIn from '../components/FadeIn';
 const STACK = [
   {
     cat: 'AI / ML',
-    desc: 'RAG pipelines, multi-agent systems, fine-tuning',
+    desc: 'Agents, RAG, structured outputs, and model orchestration',
     tools: [
-      'OpenAI', 'Claude', 'LangChain', 'Pinecone',
-      'ChromaDB', 'FAISS', 'Hugging Face', 'Whisper',
+      'OpenAI', 'Claude', 'Gemini', 'LangChain', 'Pinecone',
+      'ChromaDB', 'FAISS', 'Whisper',
     ],
   },
   {
     cat: 'Frontend',
-    desc: 'Responsive UIs, dashboards, landing pages',
+    desc: 'Responsive UIs, dashboards, and product interfaces',
     tools: [
       'React', 'Next.js', 'TypeScript', 'Tailwind CSS',
-      'Framer Motion', 'Three.js', 'Vite',
+      'Framer Motion', 'Vite',
     ],
   },
   {
     cat: 'Backend',
-    desc: 'APIs, microservices, real-time systems',
+    desc: 'APIs, real-time systems, and data pipelines',
     tools: [
       'Node.js', 'Python', 'FastAPI', 'Express',
       'PostgreSQL', 'MongoDB', 'Redis', 'GraphQL',
@@ -27,7 +27,7 @@ const STACK = [
   },
   {
     cat: 'Mobile',
-    desc: 'Cross-platform, native performance',
+    desc: 'Cross-platform apps with native performance',
     tools: [
       'React Native', 'Expo', 'Swift', 'Kotlin',
       'Firebase', 'Push Notifications',
@@ -35,18 +35,18 @@ const STACK = [
   },
   {
     cat: 'Automation',
-    desc: 'Workflows, chatbots, integrations',
+    desc: 'Workflows, chatbots, and integrations',
     tools: [
       'n8n', 'Make', 'WhatsApp API', 'Gmail API',
-      'Slack', 'Airtable', 'Google Sheets',
+      'Slack', 'Google Sheets', 'Airtable',
     ],
   },
   {
-    cat: 'DevOps',
-    desc: 'Deploy, scale, monitor',
+    cat: 'Infra',
+    desc: 'Deploy, scale, and ship fast',
     tools: [
       'Docker', 'AWS', 'Vercel', 'GitHub Actions',
-      'Kubernetes', 'Terraform', 'Cloudflare',
+      'Cloudflare', 'Supabase',
     ],
   },
 ];
@@ -60,7 +60,7 @@ export default function TechStackSection() {
             Tech Stack
           </h2>
           <p className="text-[#888] text-[clamp(0.85rem,1.5vw,1.1rem)] mt-4 max-w-lg mx-auto">
-            We pick the right tools for the job — no vendor lock-in, no unnecessary complexity.
+            The tools I reach for — chosen for the job, not for the brand.
           </p>
         </div>
       </FadeIn>

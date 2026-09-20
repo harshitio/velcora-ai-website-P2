@@ -1,10 +1,9 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import FadeIn from '../components/FadeIn';
-import ContactButton from '../components/ContactButton';
 import ImageRevealBackground from '../components/ImageRevealBackground';
 import SocialOrbit from '../components/SocialOrbit';
 import logoUrl from '../assets/logo.png';
-import { CONTACT_URL } from '../lib/constants';
+import { GITHUB_URL, X_URL } from '../lib/constants';
 
 export default function HeroSection() {
   const { scrollY } = useScroll();
@@ -33,7 +32,7 @@ export default function HeroSection() {
             <a
               href="#"
               className="block"
-              aria-label="Velcora AI"
+              aria-label="Harshit.io"
               onClick={(e) => {
                 e.preventDefault();
                 window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -41,7 +40,7 @@ export default function HeroSection() {
             >
               <img
                 src={logoUrl}
-                alt="Velcora AI logo"
+                alt="Harshit.io logo"
                 className="h-[82px] sm:h-[92px] md:h-[110px] w-auto object-contain"
               />
             </a>
@@ -51,7 +50,7 @@ export default function HeroSection() {
             y={-20}
             className="max-[480px]:hidden flex gap-4 sm:gap-6 md:gap-10"
           >
-            {['About', 'Services', 'Projects', 'Contact'].map((link) => (
+            {['About', 'Projects', 'Now', 'Contact'].map((link) => (
               <a
                 key={link}
                 href={`#${link.toLowerCase()}`}
@@ -62,33 +61,48 @@ export default function HeroSection() {
             ))}
           </FadeIn>
           <a
-            href={CONTACT_URL}
+            href={X_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="max-[480px]:inline-block hidden border-2 border-black rounded-full px-5 py-2 text-sm font-medium uppercase tracking-wider"
           >
-            Contact
+            Follow
           </a>
         </nav>
       </div>
 
       <div className="relative flex-1">
         <h1 className="absolute left-6 md:left-10 top-[16%] lg:top-1/2 lg:-translate-y-1/2 z-10 pointer-events-none font-black uppercase tracking-tight leading-[0.95] text-black text-[clamp(3rem,12vw,7.5rem)] lg:text-[clamp(3.5rem,8vw,7.5rem)]">
-          velcora
+          harshit
           <br />
-          <span className="tracking-[0.2em]">ai</span>
+          <span className="tracking-[0.2em]">.io</span>
         </h1>
       </div>
 
       <div className="relative z-30 flex items-end justify-between px-6 md:px-10 pb-7 sm:pb-8 md:pb-10">
         <FadeIn delay={0.35} y={20}>
-          <p className="text-black font-light uppercase tracking-wide leading-snug text-[clamp(0.75rem,1.4vw,1.5rem)] max-w-[160px] sm:max-w-[220px] md:max-w-[260px]">
-            we build software that runs businesses — ai agents, web apps,
-            mobile apps, automations, and custom systems
+          <p className="text-black font-light uppercase tracking-wide leading-snug text-[clamp(0.75rem,1.4vw,1.5rem)] max-w-[160px] sm:max-w-[220px] md:max-w-[320px]">
+            I build useful products with AI and software — agents,
+            automation systems, and experiments from idea to working product.
           </p>
         </FadeIn>
         <FadeIn delay={0.5} y={20}>
-          <ContactButton />
+          <div className="flex gap-3">
+            <a
+              href="#projects"
+              className="inline-block rounded-full px-6 py-3 sm:px-8 sm:py-3.5 text-xs sm:text-sm font-medium uppercase tracking-widest border-2 border-black text-black transition-colors duration-200 hover:bg-black hover:text-white"
+            >
+              View Projects
+            </a>
+            <a
+              href={GITHUB_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block rounded-full px-6 py-3 sm:px-8 sm:py-3.5 text-xs sm:text-sm font-medium uppercase tracking-widest bg-black text-white transition-colors duration-200 hover:bg-gray-800"
+            >
+              GitHub
+            </a>
+          </div>
         </FadeIn>
       </div>
     </section>
